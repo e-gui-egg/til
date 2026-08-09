@@ -20,5 +20,8 @@ pnpm dev
 GitHub Actions は push と pull request ごとに `pnpm check` と `pnpm build` を実行します。
 `main` ブランチへの push 後は、成功した静的サイトを GitHub Pages にデプロイします。
 
+Issue / Pull Request のラベルは `.github/labels.yml` で管理します。
+このファイルを `main` ブランチへ反映すると、GitHub Actions がリポジトリのラベルを自動で同期します。
+
 初回のみ、GitHub リポジトリの **Settings → Pages → Build and deployment → Source** で
 **GitHub Actions** を選択してください。
