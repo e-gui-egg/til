@@ -1,0 +1,26 @@
+{
+  "name": "setup-node-js-project",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "oxlint . --deny-warnings",
+    "format": "oxfmt . --write",
+    "format:check": "oxfmt . --check",
+    "check": "pnpm lint && pnpm format:check && astro check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "latest",
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800"
+}
