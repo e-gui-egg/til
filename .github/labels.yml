@@ -1,35 +1,6 @@
-- name: bug
-  color: d73a4a
-  description: 不具合や予期しない動作
-
-- name: documentation
+- name: drizzle
   color: 0075ca
-  description: ドキュメントの追加や更新
-
-- name: enhancement
-  color: a2eeef
-  description: 新機能や改善
-
-- name: maintenance
-  color: fef2c0
-  description: リファクタリングや開発環境の整備
-
-- name: dependencies
-  color: 0366d6
-  description: 依存パッケージの更新
-
-- name: question
-  color: d876e3
-  description: 追加情報や確認が必要
-
-- name: duplicate
-  color: cfd3d7
-  description: 既存の Issue または Pull Request と重複
-
-- name: invalid
-  color: e4e669
-  description: 対応対象外または情報が不足
-
-- name: wontfix
-  color: ffffff
-  description: 対応しない Issue または Pull Request
+- name: google cloud
+  color: 0075ca
+- name: hydra
+  color: 0075ca
