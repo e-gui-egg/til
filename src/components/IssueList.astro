@@ -11,7 +11,6 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
   {issues.map((issue) => (
     <article class="issue-card">
       <div class="issue-meta">
-        <span>ISSUE #{issue.number}</span><span aria-hidden="true">·</span>
         <time datetime={issue.createdAt}>{formatDate(issue.createdAt)}</time>
         <span class:list={["state", issue.state]}>{issue.state.toUpperCase()}</span>
       </div>

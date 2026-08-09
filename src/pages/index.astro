@@ -2,11 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import IssueList from "../components/IssueList.astro";
 import TagSidebar from "../components/TagSidebar.astro";
-import { getIssues, getRepository, getTagCounts } from "../lib/github";
+import { getIssues, getTagCounts } from "../lib/github";
 
 const issues = await getIssues();
 const tags = getTagCounts(issues);
-const repository = getRepository();
 ---
 
 <BaseLayout>
@@ -14,9 +13,7 @@ const repository = getRepository();
     <TagSidebar tags={tags} />
     <main id="content" class="feed">
       <header class="hero">
-        <p>[ TECHNICAL_JOURNAL / {new Date().getFullYear()} ]</p>
-        <h1>思考の断片を構造化し、<br />コードと共に記録する。</h1>
-        <span>Source: <a href={`https://github.com/${repository}/issues`}>github.com/{repository}/issues</a></span>
+        <h1>TODAY I LEARNED</h1>
       </header>
       <IssueList issues={issues} />
     </main>
