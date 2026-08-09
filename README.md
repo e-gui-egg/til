@@ -29,6 +29,7 @@ Issue の open / closed 状態は記事メタデータとして表示されま�
 
 GitHub Actions は push と pull request ごとに `pnpm check` と `pnpm build` を実行します。
 `main` ブランチへの push 後は、成功した静的サイトを GitHub Pages にデプロイします。
+公開 URL は独自ドメインの `https://til.e-gui-egg.dev/` 直下です。
 
 Issue / Pull Request のラベルは `.github/labels.yml` で管理します。
 このファイルを `main` ブランチへ反映すると、GitHub Actions がリポジトリのラベルを自動で同期します。
