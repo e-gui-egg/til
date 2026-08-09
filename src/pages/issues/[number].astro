@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TagSidebar from "../../components/TagSidebar.astro";
+import { formatDate, getIssues, getTagCounts, renderIssueBody, tagPath } from "../../lib/github";
+
+export async function getStaticPaths() {
+  return (await getIssues()).map((issue) => ({ params: { number: String(issue.number) }, props: { issue } }));
+}
+const { issue } = Astro.props;
+const issues = await getIssues();
+const tags = getTagCounts(issues);
+const body = await renderIssueBody(issue.body);
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+---
+
+<BaseLayout title={issue.title} description={issue.excerpt || issue.title}>
+  <div class="app-shell">
+    <TagSidebar tags={tags} />
+    <main id="content" class="article-page">
+      <a class="back" href={base}>← Feed に戻る</a>
+      <header class="article-header">
+        <div class="issue-meta"><span>ISSUE #{issue.number}</span><time datetime={issue.createdAt}>{formatDate(issue.createdAt)}</time><span class:list={["state", issue.state]}>{issue.state.toUpperCase()}</span></div>
+        <h1>{issue.title}</h1>
+        <div class="chips">{issue.labels.map((label: { name: string }) => <a href={`${base}${tagPath(label.name)}`}>#{label.name}</a>)}</div>
+      </header>
+      <article class="prose" set:html={body} />
+      <footer class="article-source"><span>Last updated {formatDate(issue.updatedAt)}</span><a href={issue.htmlUrl} target="_blank" rel="noreferrer">GitHub で Issue を見る ↗</a></footer>
+    </main>
+  </div>
+</BaseLayout>
