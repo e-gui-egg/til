@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://e-gui-egg.github.io",
-  base: "/til",
+  site: "https://til.e-gui-egg.dev",
   output: "static",
 });
