@@ -1,4 +1,4 @@
-# Issue Journal
+# TIL
 
 GitHub Issues を CMS として使う Astro 製の静的ブログです。Pull Request を除く Issue が記事になり、Issue に付けた label がタグになります。
 

@@ -12,5 +12,4 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
       <a class:list={{ active: active === tag }} href={`${base}tags/${encodeURIComponent(tag)}/`}><span># {tag}</span><small>{count}</small></a>
     ))}
   </nav>
-  <div class="provenance"><code>$ fetch --issues</code><p>GitHub Issues API をデータソースとして、ビルド時にノートを生成しています。</p></div>
 </aside>

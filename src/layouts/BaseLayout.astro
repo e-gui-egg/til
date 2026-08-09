@@ -7,7 +7,7 @@ interface Props {
   description?: string;
 }
 
-const { title = "Issue Journal", description = "GitHub Issues から生成する技術ノート" } = Astro.props;
+const { title = "TIL", description = "GitHub Issues から生成する技術ノート" } = Astro.props;
 const repository = getRepository();
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -20,28 +20,26 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" type="application/rss+xml" title="Issue Journal RSS" href={`${base}rss.xml`} />
-    <title>{title === "Issue Journal" ? title : `${title} — Issue Journal`}</title>
+    <link rel="alternate" type="application/rss+xml" title="TIL RSS" href={`${base}rss.xml`} />
+    <title>{title === "TIL" ? title : `${title} — TIL`}</title>
   </head>
   <body>
     <a class="skip-link" href="#content">本文へ移動</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href={base} aria-label="Issue Journal ホーム">
-          <span class="brand-mark">IJ</span><span>Issue Journal</span>
+        <a class="brand" href={base} aria-label="TIL ホーム">
+          <span class="brand-mark">IJ</span><span>TIL</span>
         </a>
         <nav aria-label="メインナビゲーション">
           <a href={base}>Feed</a>
           <a href={`${base}tags/`}>Labels</a>
-          <a href={`https://github.com/${repository}/issues`} target="_blank" rel="noreferrer">Repo ↗</a>
           <a href={`${base}rss.xml`}>RSS</a>
         </nav>
-        <span class="branch">branch: <strong>main</strong></span>
       </div>
     </header>
     <slot />
     <footer class="site-footer">
-      <div><span class="brand-mark">IJ</span><strong> ISSUE JOURNAL</strong></div>
+      <div><span class="brand-mark">IJ</span><strong>TIL</strong></div>
       <p>Every entry is a GitHub Issue. Published via GitHub Actions.</p>
       <a href={`https://github.com/${repository}`} target="_blank" rel="noreferrer">source/repository ↗</a>
     </footer>

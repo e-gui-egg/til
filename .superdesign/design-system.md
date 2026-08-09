@@ -1,4 +1,4 @@
-# Issue Journal — Design System
+# TIL — Design System
 
 ## Direction
 
