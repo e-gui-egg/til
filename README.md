@@ -1,11 +1,21 @@
-# Astro Static Blog
+# Issue Journal
 
-Astro と Oxc（Oxlint / Oxfmt）を使った静的ブログのスターターです。
+GitHub Issues を CMS として使う Astro 製の静的ブログです。Pull Request を除く Issue が記事になり、Issue に付けた label がタグになります。
 
 ```sh
 pnpm install
 pnpm dev
 ```
+
+公開リポジトリでは設定なしで動作します。API のレート制限を避けたい場合や private リポジトリで使う場合は、`GITHUB_TOKEN` と `GITHUB_REPOSITORY=owner/repo` を環境変数に設定してください。
+
+## Publishing
+
+1. GitHub で Issue を作成し、タイトルと Markdown 本文を入力
+2. label を付けて記事を分類
+3. Issue の作成・編集・label 変更を契機に GitHub Pages が自動再ビルド
+
+Issue の open / closed 状態は記事メタデータとして表示されます。記事を非公開にする場合は Issue を削除してください。
 
 ## Commands
 

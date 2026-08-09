@@ -1,0 +1,31 @@
+---
+import type { BlogIssue } from "../lib/github";
+import { formatDate, issuePath, tagPath } from "../lib/github";
+
+interface Props { issues: BlogIssue[] }
+const { issues } = Astro.props as Props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+---
+
+<div class="issue-list">
+  {issues.map((issue) => (
+    <article class="issue-card">
+      <div class="issue-meta">
+        <span>ISSUE #{issue.number}</span><span aria-hidden="true">·</span>
+        <time datetime={issue.createdAt}>{formatDate(issue.createdAt)}</time>
+        <span class:list={["state", issue.state]}>{issue.state.toUpperCase()}</span>
+      </div>
+      <h2><a href={`${base}${issuePath(issue.number)}`}>{issue.title}</a></h2>
+      {issue.excerpt && <p>{issue.excerpt}{issue.excerpt.length >= 180 ? "…" : ""}</p>}
+      <div class="issue-bottom">
+        <div class="chips">
+          {issue.labels.map((label) => <a href={`${base}${tagPath(label.name)}`}>#{label.name}</a>)}
+        </div>
+        <a class="read-more" href={`${base}${issuePath(issue.number)}`}>Read more →</a>
+      </div>
+    </article>
+  ))}
+  {issues.length === 0 && (
+    <div class="empty-state"><code>$ gh issue create</code><h2>まだ記事がありません</h2><p>このリポジトリで Issue を作成すると、次回のビルドで記事として公開されます。</p></div>
+  )}
+</div>

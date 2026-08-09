@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import IssueList from "../../components/IssueList.astro";
+import TagSidebar from "../../components/TagSidebar.astro";
+import { getIssues, getTagCounts } from "../../lib/github";
+export async function getStaticPaths() {
+  const issues = await getIssues();
+  return getTagCounts(issues).map(([tag]) => ({ params: { tag }, props: { tag } }));
+}
+const { tag } = Astro.props;
+const issues = await getIssues();
+const tags = getTagCounts(issues);
+const filtered = issues.filter((issue) => issue.labels.some((label) => label.name === tag));
+---
+<BaseLayout title={`#${tag}`}>
+  <div class="app-shell"><TagSidebar tags={tags} active={tag} /><main id="content" class="feed"><header class="tag-header"><p>[ LABEL_FILTER ]</p><h1>#{tag}</h1><span>{filtered.length} 件の記事</span></header><IssueList issues={filtered} /></main></div>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+interface Props { tags: Array<[string, number]>; active?: string }
+const { tags, active } = Astro.props as Props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+---
+
+<aside class="sidebar">
+  <p class="sidebar-title">⌘ Labels / Tags</p>
+  <nav aria-label="タグ">
+    <a class:list={{ active: !active }} href={base}><span># すべて</span><small>{tags.reduce((sum, [, n]) => sum + n, 0)}</small></a>
+    {tags.map(([tag, count]) => (
+      <a class:list={{ active: active === tag }} href={`${base}tags/${encodeURIComponent(tag)}/`}><span># {tag}</span><small>{count}</small></a>
+    ))}
+  </nav>
+  <div class="provenance"><code>$ fetch --issues</code><p>GitHub Issues API をデータソースとして、ビルド時にノートを生成しています。</p></div>
+</aside>
